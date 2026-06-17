@@ -46,7 +46,7 @@ Paste and modify the options inside it:
     }
 ```
 
-### 3. Setup Global KDE Plasma 6 Hotkeys
+### 2. Setup Global KDE Plasma 6 Hotkeys
 To configure the keyboard shortcuts:
 
 > [!NOTE]
