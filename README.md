@@ -4,12 +4,18 @@ An CLI utility built for **Arch Linux** running **Wayland with KDE Plasma 6**. I
 
 ## Installation
 > [!IMPORTANT]
-> [**curlFolder**](https://github.com/MeltingReactor/curlFolder), **uv** and **python3** are required to install this program.
+> [**curlFolder**](https://github.com/MeltingReactor/curlFolder), **uv** and **python3**, **wl-clipboard** required to install this program.
 
 Run this command in your terminal to set up the project folder structure, download the files, initialize an isolated virtual environment using `uv`, and grant executable rights automatically:
 
 ```bash
-mkdir -p ~/Documents/emailCLI && cd ~/Documents/emailCLI && curlFolder --quiet --override-path . "https://github.com/MeltingReactor/emailCLI/raw/refs/heads/main/email.py" && uv venv && source .venv/bin/activate && uv pip install pyperclipfix && chmod +x email.py
+mkdir -p ~/Documents/emailCLI && cd ~/Documents/emailCLI && curlFolder --quiet --override-path . "https://github.com" && uv venv && source .venv/bin/activate && uv pip install pyperclipfix && chmod +x email.py && sudo bash -c 'cat << "EOF" > /usr/local/bin/email-cli
+#!/bin/bash
+USER_HOME=$(eval echo "~${SUDO_USER:-$USER}")
+export WAYLAND_DISPLAY="wayland-0"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+"$USER_HOME/Documents/emailCLI/.venv/bin/python" "$USER_HOME/Documents/emailCLI/email.py" "$@"
+EOF' && sudo chmod +x /usr/local/bin/email-cli
 ```
 
 ## Post-Installation Configuration
@@ -63,3 +69,9 @@ Here `-n` is for the new email and `-o` is for the old.
    ```
 5. Map your chosen key combination (e.g., `Meta + E`).
 6. Click **Apply**.
+
+## Uninstallation
+To uninstall run this command:
+```bash
+rm -rf ~/Documents/emailCLI && sudo rm -f /usr/local/bin/email-cli && for rc in ~/.zshrc ~/.bashrc; do [ -f "$rc" ] && sed -i '/\/Documents\/emailCLI/d' "$rc"; done
+```
