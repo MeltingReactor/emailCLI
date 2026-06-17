@@ -46,13 +46,6 @@ Paste and modify the options inside it:
     }
 ```
 
-### 2. Append Tool Path to your Shell Profile
-Open your `~/.zshrc` or `~/.bashrc` file and ensure the bin directory is added to your environment path lookup:
-
-```bash
-export PATH=HOME/Documents/emailCLI:$PATH
-```
-
 ### 3. Setup Global KDE Plasma 6 Hotkeys
 To configure the keyboard shortcuts:
 
@@ -65,7 +58,7 @@ To configure the keyboard shortcuts:
 3. In the **Command** text field, paste this path:
 Here `-n` is for the new email and `-o` is for the old.
    ```bash
-   zsh -ic "email.py -n"
+   email-cli -n
    ```
 5. Map your chosen key combination (e.g., `Meta + E`).
 6. Click **Apply**.
@@ -73,5 +66,7 @@ Here `-n` is for the new email and `-o` is for the old.
 ## Uninstallation
 To uninstall run this command:
 ```bash
-rm -rf ~/Documents/emailCLI && sudo rm -f /usr/local/bin/email-cli && for rc in ~/.zshrc ~/.bashrc; do [ -f "$rc" ] && sed -i '/\/Documents\/emailCLI/d' "$rc"; done
+rm -rf ~/Documents/emailCLI && sudo rm -f /usr/local/bin/email-cli
 ```
+
+To keep your system clean, you may want to remove the path references from your `~/.bashrc` or `~/.zshrc` file.
