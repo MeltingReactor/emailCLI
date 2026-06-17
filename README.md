@@ -4,7 +4,7 @@ An CLI utility built for **Arch Linux** running **Wayland with KDE Plasma 6**. I
 
 ## Installation
 > [!IMPORTANT]
-> [**curlFolder**](https://github.com/MeltingReactor/curlFolder) is required to install this program.
+> [**curlFolder**](https://github.com/MeltingReactor/curlFolder), **uv** and **python3** are required to install this program.
 
 Run this command in your terminal to set up the project folder structure, download the files, initialize an isolated virtual environment using `uv`, and grant executable rights automatically:
 
