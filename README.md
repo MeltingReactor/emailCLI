@@ -50,7 +50,7 @@ Paste and modify the options inside it:
 Open your `~/.zshrc` or `~/.bashrc` file and ensure the bin directory is added to your environment path lookup:
 
 ```bash
-export PATH=HOME/Documents/emailCLI:PATH
+export PATH=HOME/Documents/emailCLI:$PATH
 ```
 
 ### 3. Setup Global KDE Plasma 6 Hotkeys
