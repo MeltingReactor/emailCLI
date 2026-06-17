@@ -1,0 +1,11 @@
+[Config:SCS]
+  SCS{
+      version=1.0.0
+    }
+
+[Config:SCS-Python]
+  SCS-Python{
+      email="new@scs.org"
+      old_email="old@scs.org"
+      default_mode=1
+    }
