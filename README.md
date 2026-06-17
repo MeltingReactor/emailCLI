@@ -9,7 +9,7 @@ An CLI utility built for **Arch Linux** running **Wayland with KDE Plasma 6**. I
 Run this command in your terminal to set up the project folder structure, download the files, initialize an isolated virtual environment using `uv`, and grant executable rights automatically:
 
 ```bash
-mkdir -p ~/Documents/emailCLI && cd ~/Documents/emailCLI && curlFolder --quiet "https://github.com/MeltingReactor/emailCLI/raw/refs/heads/main/email.py" && uv venv && source .venv/bin/activate && uv pip install pyperclipfix && chmod +x email.py
+mkdir -p ~/Documents/emailCLI && cd ~/Documents/emailCLI && curlFolder --quiet --override-path . "https://github.com/MeltingReactor/emailCLI/raw/refs/heads/main/email.py" && uv venv && source .venv/bin/activate && uv pip install pyperclipfix && chmod +x email.py
 ```
 
 ## Post-Installation Configuration
