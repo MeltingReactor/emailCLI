@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 import os
+# Force the exact display sockets explicitly inside Python
+os.environ["WAYLAND_DISPLAY"] = "wayland-0"
+os.environ["XDG_RUNTIME_DIR"] = f"/run/user/{os.getuid()}"
 import sys
 import re
 import argparse
