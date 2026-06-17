@@ -1,2 +1,63 @@
-# emailCLI
-A simple linux tool to copy your email to the clipboard.
+# EmailCLI
+
+An CLI utility built for **Arch Linux** running **Wayland with KDE Plasma 6**. It extracts configured email strings from a local configuration data file and copies them directly into the system clipboard via native Wayland protocols.
+
+## Installation
+
+Run this command in your terminal to set up the project folder structure, download the files, initialize an isolated virtual environment using `uv`, and grant executable rights automatically:
+
+```bash
+mkdir -p ~/Documents/emailCLI && cd ~/Documents/emailCLI && curlFolder -e --quiet "https://github.com" && uv venv && source .venv/bin/activate && uv pip install pyperclipfix && chmod +x email.py
+```
+
+## Post-Installation Configuration
+
+### 1. Create your Config File
+Create your configuration file inside your local folder path:
+
+```bash
+nano ~/Documents/emailCLI/config.scs
+```
+
+> [!TIP]
+> Default mode controls what email will paste
+> if you just run the command without options.
+> `1` is *new email* and `0` is *old email*.
+Paste and modify the options inside it:
+```scs
+[Config:SCS]
+  SCS{
+      version=1.0.0
+    }
+
+[Config:SCS-Python]
+  SCS-Python{
+      email="new@scs.org"
+      old_email="old@scs.org"
+      default_mode=1
+    }
+```
+
+### 2. Append Tool Path to your Shell Profile
+Open your `~/.zshrc` or `~/.bashrc` file and ensure the bin directory is added to your environment path lookup:
+
+```bash
+export PATH=HOME/Documents/emailCLI:PATH
+```
+
+### 3. Setup Global KDE Plasma 6 Hotkeys
+To configure the keyboard shortcuts:
+
+> [!NOTE]
+> On other *desktop enviroments*, just use the command listed
+> in the steps below for setting up shortcuts in your own way.
+
+1. Open **KDE System Settings** ➔ **Keyboard** ➔ **Shortcuts**.
+2. Click **Add New** ➔ **Command**.
+3. In the **Command** text field, paste this path:
+Here `-n` is for the new email and `-o` is for the old.
+   ```bash
+   zsh -ic "email.py -n"
+   ```
+5. Map your chosen key combination (e.g., `Meta + E`).
+6. Click **Apply**.
